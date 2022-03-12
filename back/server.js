@@ -36,22 +36,19 @@ const logger = (req, res, next) => {
 }; 
 
 const signInValidation = async (req, res, next) => {
-    const posibleUsuario = {
-        nombre,
-        apellido,
-        correo,
-        perfil,
-        contrasena,
+    const User = {
+        email,
+        password
     } = req.body;
     
-    const userInDb = await Usuarios.findOne({
-        attributes: ["correo"],
-        $or: [{correo: posibleUsuario.correo}]
+    const userInDb = await Users.findOne({
+        attributes: ["email"],
+        $or: [{email: User.email}]
     })
     if(userInDb){
-        if(userInDb.correo == posibleUsuario.correo){
+        if(userInDb.email == User.email){
             res.status(401);
-            res.json({error: "El correo electronico ingresado no se encuentra disponible"})
+            res.json({error: "Email is not available. Please, try again."})
         }else{
             next()
         }
@@ -63,24 +60,40 @@ const signInValidation = async (req, res, next) => {
 
 const adminValidation = async (req, res, next)=>{
     try {
-        const comprobation = await Usuarios.findOne({
-            where: {id: req.user.id, esAdmin: true}
+        const comprobation = await Users.findOne({
+            where: {id: req.user.id, isAdmin: true}
         });
     
         if(comprobation){
             next();
         }else{
             res.status(401);
-            res.json({error: "Acceso denegado"});
+            res.json({error: "Denied access"});
         }
         
     } catch (error) {
-        res.status(500).json({error: "Error, intentelo de nuevo más tarde"});
+        res.status(500).json({error: "Error, try again later."});
     }
 }
 
+const newMovementValidation = async (req, res, next)=>{
+    const {type, value, concept} = req.body
+
+    if(
+        (type !== "ENTRY" && type !== "EGRESS") ||
+        (!value || value == "") || 
+        (!concept || concept == "")
+        ){
+            res.status(401).json("Any field is null. Check and try again")
+    }else{
+        next()
+    }
+    
+
+}
+
 const limiter = rateLimit({
-    windowMs: 120 * 1000, //60 segundos
+    windowMs: 120 * 1000, //60 seconds
     max: 5,
     message: "Many requests, please try again later",
 });
@@ -100,20 +113,20 @@ server.use(
     })
 );  
 
-////ENDPOINTS
+////USER ENDPOINTS
 
 //SIGN IN
-server.post("/signIn",signInValidation, adminValidation, async (req, res)=>{
-    const newUser = {nombre, apellido, correo, perfil, contrasena, esAdmin} = req.body;
+server.post("/signIn",signInValidation, async (req, res)=>{
+    const newUser = {email, password} = req.body;
 
     try {
-        if(nombre == "" || apellido == "" || correo == ""|| perfil == "" || contrasena == ""){
-            throw new Error("Algun campo está vacio")
+        if(email == ""|| password == ""){
+            throw new Error("Any input is empty. Please, try again")
         }else{
-            Usuarios.create(newUser)
+            Users.create(newUser)
             .then(()=>{
                 res.status(200);
-                res.json("Usuario creado con éxito")
+                res.json("User sucesfully created")
             })
             .catch((error=>{
                 res.status(400);
@@ -129,24 +142,142 @@ server.post("/signIn",signInValidation, adminValidation, async (req, res)=>{
 
 //LOGIN
 server.post("/logIn",limiter, async(req, res) =>{
-    const {posibleCorreo, posibleContrasena} = req.body;
+    const {email, password} = req.body;
 
-    const posibleUsuario = await Usuarios.findOne({
-        where: {correo: posibleCorreo, contrasena: posibleContrasena}
+    const User = await Users.findOne({
+        where: {email, password}
     });
 
-    if(posibleUsuario){
+    if(User){
         const token = jwt.sign(
             {
-                id: posibleUsuario.id,
-                esAdmin: posibleUsuario.esAdmin
+                id: User.id,
+                isAdmin: User.isAdmin
             },
             JWT_SECRET,
             {expiresIn: "24h"}
         );
         res.status(200).json(token);
     }else{
-        res.status(401).json("Correo o contraseña invalidos. Intente nuevamente")
+        res.status(401).json("Invalid email or password. Please, try again.")
+    }
+})
+
+//GET ALL USERS
+server.get("/users", adminValidation, async (req, res) => {
+    const usersArray = await Users.findAll()
+    res.json(usersArray);
+    res.status(200);
+});
+
+//GET USER WITH ID
+server.get("/users/:id",adminValidation, async (req, res) => {
+    try {
+        const userId = req.params.id
+        const user = await Users.findOne({
+        where:{id: userId}
+        })
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(400).json(error.message);
+    }
+});
+
+//EDIT USER
+server.put("/users/:id", adminValidation, async(req,res)=>{
+    idUser = req.params.id;
+    const {email, password, isAdmin} = req.body;
+    try {
+        await Users.update({email, password, isAdmin}, {where:{id: idUser}});
+        const User = await Users.findOne({where: {id: idUser}});
+
+        if(User !== null){
+            res.status(200).json(`User was successfully modified`)
+        }else{
+            throw new Error(`don't exist an user with id ${idUser}`)
+        }
+
+    }catch (error) {
+        res.status(400).json({error: error.message})
+    }
+})
+
+//DELETE USER
+server.delete("/users/:id", adminValidation, async (req,res) =>{
+    const idUser = req.params.id;
+
+    try {
+        await Budget.destroy({
+            where:{
+                users_id: idUser
+            }
+        })
+
+        await Users.destroy({
+            where: {
+                id: idUser
+            }
+        });
+    
+        res.status(200).json("User was deleted successfully");
+    } catch (error) {
+        res.status(400).json(error.message);
+    }
+
+});
+
+////MOVEMENTS ENDPOINTS
+
+//GET MOVEMENTS
+server.get("/budget", async(req,res)=>{
+    try {
+        const movements = await Budget.findAll({
+            where:{users_id: req.user.id}
+        })
+        res.status(200).json(movements)
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+})
+
+//NEW MOVEMENT
+server.post("/budget", newMovementValidation, async(req,res) =>{
+    req.body.users_id = req.user.id
+    const newMovement = {type, value, concept} = req.body
+    
+    try {
+        await Budget.create(newMovement)
+        res.status(200).json("Movement sucessfully saved")
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+})
+
+//EDIT MOVEMENT
+server.put("/budget/:id", async(req,res) =>{
+    const movementId = req.params.id
+    const {value, concept} = req.body
+    try {
+        if(value !== "" && concept !== ""){
+            await Budget.update({value: value, concept: concept}, {where: {id: movementId}})
+            res.status(200).json("Movement sucessfully edited")
+        }else{
+            throw new Error("Any field is null. Check and try again.")
+        }
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+})
+
+//DELETE MOVEMENT
+server.delete("/budget/:id", async(req,res) =>{
+    const movementId = req.params.id
+    try {
+        await Budget.destroy({where: {id:movementId}})
+        res.status(200).json("Movement sucessfully deleted")
+        
+    } catch (error) {
+        res.status(400).json(error.message)
     }
 })
 
