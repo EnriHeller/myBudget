@@ -27,7 +27,7 @@ function SignUpForm(){
                 }}></input>
             </label>
 
-            <button>Sign Up</button>
+            <button className="optionButton">Sign Up</button>
         </form>
     )
 }   

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 export const LoginContext = createContext()
 
 export const LoginContextProvider = ({children})=>{
-    //login states
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [repeatPassword, setRepeatPassword] = useState("")
@@ -106,9 +105,6 @@ export const LoginContextProvider = ({children})=>{
             setErrorMessage(error.message)
         }
     }
-
-
-
 
     return <LoginContext.Provider value ={{
         email,

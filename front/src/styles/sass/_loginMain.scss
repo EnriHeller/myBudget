@@ -73,7 +73,7 @@
 }
 
 .loginMain-formContainer.active{
-    transform: translateX(-110%);
+    transform: translateX(-106%);
 }
 
 .signUp{
@@ -118,6 +118,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
+    border-radius: 10px;
 } 
 
 .errorContainer{

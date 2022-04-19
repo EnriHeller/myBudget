@@ -28,7 +28,7 @@ function SignInForm(){
                     </input>
             </label>
                 <ErrorContainer/>
-            <button>Sign In</button>
+            <button className="optionButton">Sign In</button>
         </form>
     )
 }
