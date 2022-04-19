@@ -115,8 +115,8 @@ server.use(
 
 ////USER ENDPOINTS
 
-//SIGN IN
-server.post("/signIn",signInValidation, async (req, res)=>{
+//SIGN UP
+server.post("/signUp",signInValidation, async (req, res)=>{
     const newUser = {email, password} = req.body;
 
     try {

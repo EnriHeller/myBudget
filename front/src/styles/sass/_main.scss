@@ -1,0 +1,255 @@
+.main{
+    background-color: $primary-color;
+    width: 100%;
+    font-family: $font-family-1;
+    min-height: 87vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainTable{
+    margin: 20px  auto;
+    width: 90%;
+    border-width: 2px;
+    border-style: solid;
+    display: grid;
+    background-color: $background-color-1;
+    border-color: $terciary-color;
+    grid-template-columns: 0.3fr 0.5fr 1fr 0.5fr 0.2fr;
+    grid-gap: 1px;
+    box-shadow: 0 5px 45px rgba(0,0,0,0.15);
+}
+
+.mainTable > div{
+    background-color: $primary-color;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $terciary-color;
+    text-align: center;
+}
+
+.mainResume{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $background-color-1;
+    width: 100%;
+}
+
+.mainResume-valueContainer{
+    background-color: $primary-color;
+    width: 13vw;
+    height: 13vw;
+    color: $terciary-color;
+    font-size: 28px;
+    border-radius: 50%;
+    margin-top: 20px;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainResume-options{
+    margin: 10px 0 20px 0;
+}
+
+.optionButton{
+    margin: 10px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: $primary-color;
+    color: $terciary-color;
+    border-radius: 10px;
+    border: 1px solid $terciary-color;
+    cursor:pointer
+}
+
+.optionButton:hover{
+    background-color: $terciary-color;
+    color: $primary-color;
+}
+
+.title-mainTable{
+    font-weight: 600;
+}
+
+.content-mainTable{
+    padding: 10px;
+}
+
+.typeDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $terciary-color;
+    padding: 5px;
+    color: $primary-color;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+.table-options{
+    display: flex;
+    color: $terciary-color;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.tableBtn{
+    border: 1px solid $terciary-color;
+
+}
+
+.selected{
+    background-color: $terciary-color;
+    color: $primary-color;
+    font-weight: bold;
+}
+
+
+
+
+.popUpBkg{
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.309);
+    @include center-columns;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.popUpContainer{
+    background-color: $primary-color;
+    padding: 32px 24px;
+    width: 40%;
+    font-family: $font-family-1;
+    border: 1px solid $secondary-color ;
+    border-radius: 30px;
+    color: $terciary-color;
+}
+#value{
+    color: $terciary-color;
+}
+.popUpContainer h2{
+    font-size: 32px;
+    align-self: center;
+}
+
+
+.popUpForm, .popUpContainer{
+   display: flex;
+   flex-direction: column;
+}
+
+.popUpForm label{
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.popUpForm input{
+    width: 90px;
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+}
+
+.popUpForm p{
+    margin: 0 5px 4px 0;
+}
+
+#concept{
+    resize: none;
+    font-family: $font-family-1;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.amountInputContainer{
+    display: flex;
+    align-self: flex-start;
+    justify-content: center;
+    margin:  20px 0;
+}
+
+.popUpForm button{
+    margin: 15px 8px;
+    padding: 8px;
+}
+
+.confirmMessage{
+    margin-top: 10px;
+    color: rgb(0, 179, 0);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.enablePopUp{
+    z-index: 1000;
+    opacity: 1
+}
+
+.popUpBtnContainer{
+    margin-top: 10px;
+    align-self: flex-end ;
+}
+
+.actionImg{
+    width: 20px;
+}
+
+.actionButtonsContainer{
+    display: flex;
+}
+
+.editButton, .deleteButton{
+    margin: 0 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer 
+}
+
+@media (max-width: 414px){
+    .mainResume-valueContainer{
+        padding: 30px;
+        border-radius: 20%;
+    }
+
+    .table-optionButton{
+        font-size: 14px;
+    }
+
+    .mainTable > div{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 300px){
+    .mainResume-valueContainer{
+        padding: 20px;
+        border-radius: 20%;
+    }
+
+    .table-optionButton{
+        font-size: 14px;
+    }
+
+    .content-mainTable{
+        padding: 5px;
+    }
+}

@@ -1,0 +1,19 @@
+@import "./sass/mixins";
+@import "./sass/variables";
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Dancing+Script&display=swap');
+
+*{
+    @include format-document;
+}
+
+body{
+    transition: 0.5s;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden
+}
+
+@import "./sass/header";
+@import "./sass/loginMain";
+@import "./sass/main";
+@import "./sass/footer";

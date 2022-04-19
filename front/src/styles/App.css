@@ -1,0 +1,623 @@
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Dancing+Script&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  list-style: none;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  outline: none;
+}
+
+body {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.header {
+  width: 100%;
+  height: 10vh;
+  background-color: #141E27;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 16px;
+  color: #cce09d;
+  justify-self: flex-start;
+}
+
+.header-logo {
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+}
+
+.header-ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.signPage {
+  height: 100vh;
+}
+
+.loginMain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #c3ddc2;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 87vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loginMain-container {
+  width: 60vw;
+  height: 60vh;
+  background-color: #cce09d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.loginMain-titleContainer {
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  font-family: "Abel", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.loginMain-container button {
+  margin: 20px;
+  padding: 10px;
+  background-color: #141E27;
+  color: #cce09d;
+  cursor: pointer;
+}
+
+.loginMain-slider {
+  width: 30vw;
+  height: 80vh;
+  background-color: #141E27;
+  z-index: 1000;
+  position: absolute;
+  left: 20vw;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0px 3px 14px 4px rgba(0, 0, 0, 0.27);
+  -webkit-box-shadow: 0px 3px 14px 4px rgba(0, 0, 0, 0.27);
+  -moz-box-shadow: 0px 3px 14px 4px rgba(0, 0, 0, 0.27);
+  overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loginMain-slider.active {
+  -webkit-transform: translateX(30vw);
+          transform: translateX(30vw);
+}
+
+.loginMain-formContainer {
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  padding: 30px;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+  font-family: "Abel", sans-serif;
+  color: #cce09d;
+}
+
+.loginMain-formContainer.active {
+  -webkit-transform: translateX(-110%);
+          transform: translateX(-110%);
+}
+
+.signUp {
+  left: 100%;
+}
+
+.loginMain-formTitle {
+  color: #cce09d;
+}
+
+.loginForm {
+  margin-top: 20px;
+  height: 85%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 20px;
+}
+
+.loginForm label {
+  margin: 10px 0px;
+}
+
+.loginForm input {
+  width: 100%;
+  padding: 5px;
+}
+
+.loginForm button {
+  height: 40px;
+  width: 120px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background-color: transparent;
+  border-style: solid;
+  border-color: #cce09d;
+  color: #cce09d;
+  cursor: pointer;
+}
+
+.titleButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.errorContainer {
+  color: red;
+}
+
+.signMessage {
+  font-size: 18px;
+}
+
+@media screen and (max-width: 800px) {
+  .loginMain {
+    padding-top: 10%;
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+  }
+  .loginMain-container {
+    height: 85%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .loginMain-container:first-child {
+    margin-top: 10px;
+  }
+  .loginMain-titleContainer {
+    width: 100%;
+    height: 25%;
+  }
+  .loginForm {
+    margin-top: auto;
+    height: auto;
+  }
+  .loginMain-slider {
+    width: 60vw;
+    height: 50%;
+    left: 20vw;
+    overflow-y: visible;
+  }
+  .loginMain-slider.active {
+    -webkit-transform: translateY(40%);
+            transform: translateY(40%);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .loginMain-titleContainer {
+    font-size: 15px;
+  }
+  .loginMain-formTitle {
+    font-size: 20px;
+  }
+  .loginForm label, .loginForm button, .titleButton {
+    font-size: 12px;
+  }
+  .loginForm button, .titleButton {
+    height: 30px;
+    width: 100px;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+}
+
+.main {
+  background-color: #141E27;
+  width: 100%;
+  font-family: "Abel", sans-serif;
+  min-height: 87vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mainTable {
+  margin: 20px  auto;
+  width: 90%;
+  border-width: 2px;
+  border-style: solid;
+  display: -ms-grid;
+  display: grid;
+  background-color: #c3ddc2;
+  border-color: #cce09d;
+  -ms-grid-columns: 0.3fr 0.5fr 1fr 0.5fr 0.2fr;
+      grid-template-columns: 0.3fr 0.5fr 1fr 0.5fr 0.2fr;
+  grid-gap: 1px;
+  -webkit-box-shadow: 0 5px 45px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 45px rgba(0, 0, 0, 0.15);
+}
+
+.mainTable > div {
+  background-color: #141E27;
+  font-size: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #cce09d;
+  text-align: center;
+}
+
+.mainResume {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #c3ddc2;
+  width: 100%;
+}
+
+.mainResume-valueContainer {
+  background-color: #141E27;
+  width: 13vw;
+  height: 13vw;
+  color: #cce09d;
+  font-size: 28px;
+  border-radius: 50%;
+  margin-top: 20px;
+  border-style: solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mainResume-options {
+  margin: 10px 0 20px 0;
+}
+
+.optionButton {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #141E27;
+  color: #cce09d;
+  border-radius: 10px;
+  border: 1px solid #cce09d;
+  cursor: pointer;
+}
+
+.optionButton:hover {
+  background-color: #cce09d;
+  color: #141E27;
+}
+
+.title-mainTable {
+  font-weight: 600;
+}
+
+.content-mainTable {
+  padding: 10px;
+}
+
+.typeDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #cce09d;
+  padding: 5px;
+  color: #141E27;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.table-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #cce09d;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 10px;
+}
+
+.tableBtn {
+  border: 1px solid #cce09d;
+}
+
+.selected {
+  background-color: #cce09d;
+  color: #141E27;
+  font-weight: bold;
+}
+
+.popUpBkg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.309);
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  z-index: -1;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.popUpContainer {
+  background-color: #141E27;
+  padding: 32px 24px;
+  width: 40%;
+  font-family: "Abel", sans-serif;
+  border: 1px solid #203239;
+  border-radius: 30px;
+  color: #cce09d;
+}
+
+#value {
+  color: #cce09d;
+}
+
+.popUpContainer h2 {
+  font-size: 32px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.popUpForm, .popUpContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.popUpForm label {
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 25px;
+}
+
+.popUpForm input {
+  width: 90px;
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+}
+
+.popUpForm p {
+  margin: 0 5px 4px 0;
+}
+
+#concept {
+  resize: none;
+  font-family: "Abel", sans-serif;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.amountInputContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 20px 0;
+}
+
+.popUpForm button {
+  margin: 15px 8px;
+  padding: 8px;
+}
+
+.confirmMessage {
+  margin-top: 10px;
+  color: #00b300;
+  opacity: 0;
+  z-index: -1;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.enablePopUp {
+  z-index: 1000;
+  opacity: 1;
+}
+
+.popUpBtnContainer {
+  margin-top: 10px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.actionImg {
+  width: 20px;
+}
+
+.actionButtonsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.editButton, .deleteButton {
+  margin: 0 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 414px) {
+  .mainResume-valueContainer {
+    padding: 30px;
+    border-radius: 20%;
+  }
+  .table-optionButton {
+    font-size: 14px;
+  }
+  .mainTable > div {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 300px) {
+  .mainResume-valueContainer {
+    padding: 20px;
+    border-radius: 20%;
+  }
+  .table-optionButton {
+    font-size: 14px;
+  }
+  .content-mainTable {
+    padding: 5px;
+  }
+}
+
+.footer {
+  background-color: #141E27;
+  color: #203239;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  height: 3vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer small {
+  margin-right: 10px;
+}
+/*# sourceMappingURL=App.css.map */

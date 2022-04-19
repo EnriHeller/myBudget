@@ -1,0 +1,188 @@
+.signPage{
+    height: 100vh;
+}
+
+.loginMain{
+    display: flex;
+    align-items: center;
+    background-color: $background-color-1;
+    flex-direction: column;
+    height: 87vh;
+    justify-content: center;
+}
+
+.loginMain-container{
+    width: 60vw;
+    height: 60vh;
+    background-color: $terciary-color;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginMain-titleContainer{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-family: $font-family-1;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.loginMain-container button{
+    margin: 20px;
+    padding: 10px;
+    background-color: $primary-color;
+    color: $terciary-color;
+    cursor: pointer
+}
+
+.loginMain-slider{
+    width: 30vw;
+    height: 80vh;
+    background-color: $primary-color;
+    z-index: 1000;
+    position: absolute;
+    left: 20vw;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0px 3px 14px 4px rgba(0,0,0,0.27);
+    -webkit-box-shadow: 0px 3px 14px 4px rgba(0,0,0,0.27);
+    -moz-box-shadow: 0px 3px 14px 4px rgba(0,0,0,0.27);
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.loginMain-slider.active{
+    transform: translateX(30vw);
+}
+
+.loginMain-formContainer{
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    padding: 30px;
+    transition: all 0.5s ease-in-out;
+    transition-delay: 0.3s;
+    font-family: $font-family-1;
+    color: $terciary-color;
+
+}
+
+.loginMain-formContainer.active{
+    transform: translateX(-110%);
+}
+
+.signUp{
+    left: 100%
+}
+
+.loginMain-formTitle{
+    color: $terciary-color;
+}
+
+.loginForm{
+    margin-top: 20px;
+    height: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.loginForm label{
+    margin: 10px 0px;
+}
+
+.loginForm input{
+    width: 100%;
+    padding: 5px;
+}
+
+.loginForm button{
+    height: 40px;
+    width: 120px;
+    align-self: flex-end;
+    background-color: transparent;
+    border-style: solid;
+    border-color: $terciary-color;
+    color: $terciary-color;
+    cursor: pointer;
+}
+
+.titleButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.errorContainer{
+    color: red;
+}
+.signMessage{
+    font-size: 18px;
+}
+
+@media screen and (max-width: 800px){
+    .loginMain{
+        padding-top: 10%;
+        justify-content: unset;
+    }
+
+    .loginMain-container{
+        height: 85%;
+        flex-direction: column;
+    }
+
+    .loginMain-container:first-child{
+        margin-top: 10px;
+    }
+
+    .loginMain-titleContainer{
+        width: 100%;
+        height: 25%;
+    }
+
+    .loginForm{
+        margin-top: auto;
+        height: auto;
+    }
+
+    .loginMain-slider{
+        width: 60vw;
+        height: 50%;
+        left:20vw;
+        overflow-y: visible;
+    }
+
+    .loginMain-slider.active{
+        transform: translateY(40%);
+    }
+}
+
+@media screen and (max-width: 400px){
+    .loginMain-titleContainer{
+        font-size: 15px;
+    }
+
+    .loginMain-formTitle{
+        font-size: 20px;
+    }
+
+    .loginForm label, .loginForm button, .titleButton{
+        font-size: 12px;
+    }
+
+    .loginForm button, .titleButton{
+        height: 30px;
+        width: 100px;
+        align-self: center;
+    }
+
+}
+
+
