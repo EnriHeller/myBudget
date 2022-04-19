@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import ConfirmContainer from "./confirmContainer";
-import { FetchContext } from "../contexts/fetchContext";
+import { MainContext } from "../contexts/mainContext";
 
 function Resume(){
     const {total,
@@ -8,7 +8,7 @@ function Resume(){
          popUpClass,
          setPopUpClass,
          setType
-        }= useContext(FetchContext)
+        }= useContext(MainContext)
 
     function movementAction(type){
         setType(type)

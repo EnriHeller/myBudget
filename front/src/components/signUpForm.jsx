@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { FetchContext } from "../contexts/fetchContext";
+import { LoginContext } from "../contexts/loginContext";
 
 function SignUpForm(){
-    const {setEmail, setPassword, setRepeatPassword,signUp}= useContext(FetchContext)
+    const {setEmail, setPassword, setRepeatPassword,signUp}= useContext(LoginContext)
 
     function handleSubmit(event){
         event.preventDefault();

@@ -1,11 +1,11 @@
 import { useContext } from "react"
-import { FetchContext } from "../contexts/fetchContext"
+import { MainContext } from "../contexts/mainContext"
 import editIcon from "../imgs/editIcon.png";
 import deleteIcon from "../imgs/deleteIcon.png";
 
 
 function MovRow({movement}){
-    const {deleteMovement, setConcept, setValue, setPopUpClass, setOperation}= useContext(FetchContext)
+    const {deleteMovement, setConcept, setValue, setPopUpClass, setOperation}= useContext(MainContext)
     
     function TypeField({type}){
         if(type === "ENTRY"){

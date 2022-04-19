@@ -1,13 +1,17 @@
 import Header from "../containers/header"
 import LoginMain from "../containers/loginMain"
 import Footer from "../containers/footer";
+import { LoginContextProvider } from "../contexts/loginContext";
+
 function signPage(){
     return(
-        <div className="signPage">
-            <Header></Header>
-            <LoginMain></LoginMain>
-            <Footer></Footer>
-        </div>
+        <LoginContextProvider>
+            <div className="signPage">
+                <Header></Header>
+                <LoginMain></LoginMain>
+                <Footer></Footer>
+            </div>
+        </LoginContextProvider>
     )
 }
 

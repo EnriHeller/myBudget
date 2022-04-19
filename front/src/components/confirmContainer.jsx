@@ -1,9 +1,9 @@
 import { useContext, useState, useEffect } from "react";
-import { FetchContext } from "../contexts/fetchContext";
+import { MainContext } from "../contexts/mainContext";
 
 function ConfirmContainer(){
     const [confirmClass, setConfirmClass] = useState("confirmMessage")
-    const {confirmMessage, setConfirmMessage }= useContext(FetchContext)
+    const {confirmMessage, setConfirmMessage }= useContext(MainContext)
 
     useEffect(()=>{
         if(confirmMessage !== ""){

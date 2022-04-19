@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { FetchContext } from "../contexts/fetchContext";
+import { LoginContext } from "../contexts/loginContext";
 
 function SignInForm(){
-    const {setEmail, setPassword,login, errorMessage}= useContext(FetchContext)
+    const {setEmail, setPassword,login, errorMessage}= useContext(LoginContext)
 
     function handleSubmit(event){
         event.preventDefault();

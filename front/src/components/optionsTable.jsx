@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import { FetchContext } from "../contexts/fetchContext"
+import { MainContext } from "../contexts/mainContext"
 
 function OptionsTable(){
     const {
@@ -8,7 +8,7 @@ function OptionsTable(){
         expenses,
         setSelectedOption,
         selectedOption
-    } = useContext(FetchContext)
+    } = useContext(MainContext)
 
     useEffect(()=>{
         optionFunction(selectedOption)

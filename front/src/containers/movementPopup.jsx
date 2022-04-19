@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { FetchContext } from "../contexts/fetchContext";
+import { MainContext } from "../contexts/mainContext";
 
 function Popup(){
     const {
@@ -14,7 +14,7 @@ function Popup(){
         setConcept,
         operation,
         editMovement
-    }= useContext(FetchContext)
+    }= useContext(MainContext)
 
     const [title, setTitle] = useState("New entry")
 

@@ -1,14 +1,14 @@
 import { useState, useContext } from "react"
 import SignUpForm from "../components/signUpForm";
 import SignInForm from "../components/signInForm";
-import { FetchContext } from "../contexts/fetchContext";
+import { LoginContext } from "../contexts/loginContext";
 
 
 function LoginMain(){
     const [formClass, setFormClass] = useState("loginMain-slider")
     const [contentClass, setContentClass] = useState("loginMain-formContainer signIn")
     const [contentClass2, setContentClass2] = useState("loginMain-formContainer signUp")
-    const {confirmMessage}= useContext(FetchContext)
+    const {confirmMessage}= useContext(LoginContext)
 
     
 

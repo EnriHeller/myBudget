@@ -1,10 +1,10 @@
 import MovRow from "./movRow";
 import { useContext } from "react";
-import { FetchContext } from "../contexts/fetchContext";
+import { MainContext } from "../contexts/mainContext";
 
 
 function Table(){
-    const {selectedOption} = useContext(FetchContext)
+    const {selectedOption} = useContext(MainContext)
 
     function Title({content}){
         return(

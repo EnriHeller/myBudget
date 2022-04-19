@@ -2,15 +2,18 @@ import Footer from "../containers/footer";
 import Header from "../containers/header"
 import Main from "../containers/main";
 import Popup from "../containers/movementPopup";
+import { MainContextProvider } from "../contexts/mainContext";
 
 function MainPage(){
     return(
-        <div>
+        <MainContextProvider>
+
             <Popup></Popup>
             <Header></Header>
             <Main></Main>
             <Footer></Footer>
-        </div>
+
+        </MainContextProvider>
     )
 }
 
