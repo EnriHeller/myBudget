@@ -59,7 +59,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #c3ddc2;
+  background-color: #203239;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -73,7 +73,8 @@ body {
 .loginMain-container {
   width: 60vw;
   height: 60vh;
-  background-color: #cce09d;
+  background-color: #141E27;
+  color: #cce09d;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -212,7 +213,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: none;
+  border: 1px solid #cce09d;
   border-radius: 10px;
 }
 
@@ -304,7 +305,7 @@ body {
   border-style: solid;
   display: -ms-grid;
   display: grid;
-  background-color: #c3ddc2;
+  background-color: #203239;
   border-color: #cce09d;
   -ms-grid-columns: 0.3fr 0.5fr 1fr 0.5fr 0.2fr;
       grid-template-columns: 0.3fr 0.5fr 1fr 0.5fr 0.2fr;
@@ -343,7 +344,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #c3ddc2;
+  background-color: #203239;
   width: 100%;
 }
 

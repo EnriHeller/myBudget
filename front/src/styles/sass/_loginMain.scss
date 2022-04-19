@@ -14,7 +14,8 @@
 .loginMain-container{
     width: 60vw;
     height: 60vh;
-    background-color: $terciary-color;
+    background-color: $primary-color;
+    color: $terciary-color;
     display: flex;
     justify-content: space-between;
 }
@@ -118,7 +119,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: none;
+    border: 1px solid $terciary-color;
     border-radius: 10px;
 } 
 
