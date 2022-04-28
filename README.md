@@ -30,7 +30,7 @@ Username: root
 Then confirm, press **OK** and get into connection.
 After that, open *scriptSql.sql* file saved on *back* folder and execute their sentences. It will be created *my-budget* schema (If do you want to see it, it's necessary refresh the schema list).
 
-Later, To run the local server, open *back* folder in Git Bash terminal and execute `npm install` for install the proyect dependencies. next, you must run `npm run dev`.
+Later, To run the local server, open *back* folder in Git Bash terminal and execute `npm install` for install the proyect dependencies. Next, you must run `npm run dev`.
 
 If the steps were executed successfully, you should see the following message in the console:
 
