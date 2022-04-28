@@ -1,6 +1,6 @@
 # My Budget
 
-This is a managing tool for a personal budget. With this app, you can create and edit your money movements (incomes and outflows). Too, you will see the total balance of all registered operations. 
+This is a managing tool for a personal budget. With this app, you can save, create and edit your money movements (incomes and outflows). Too, you will see the total balance of all registered operations. 
 
 ---
 ## Requirements
