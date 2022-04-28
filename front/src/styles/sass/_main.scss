@@ -42,8 +42,8 @@
 
 .mainResume-valueContainer{
     background-color: $primary-color;
-    width: 13vw;
-    height: 13vw;
+    width: 150px;
+    height: 150px;
     color: $terciary-color;
     font-size: 28px;
     border-radius: 50%;
@@ -94,8 +94,6 @@
     height: 30px;
 }
 
-
-
 .table-options{
     display: flex;
     color: $terciary-color;
@@ -114,9 +112,6 @@
     color: $primary-color;
     font-weight: bold;
 }
-
-
-
 
 .popUpBkg{
     display: flex;
@@ -146,7 +141,6 @@
     font-size: 32px;
     align-self: center;
 }
-
 
 .popUpForm, .popUpContainer{
    display: flex;
@@ -224,6 +218,26 @@
     cursor: pointer 
 }
 
+.firstMovContainer{
+    color: $terciary-color;
+    width: 90%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.firstMovContainer p{
+    border: 1px solid $terciary-color;
+    padding: 30px;
+    text-align: center;
+}
+
+.hidden{
+    display:none
+}
+
 @media (max-width: 414px){
     .mainResume-valueContainer{
         padding: 30px;
@@ -237,12 +251,21 @@
     .mainTable > div{
         font-size: 16px;
     }
+
+    .actionButtonsContainer{
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 300px){
     .mainResume-valueContainer{
         padding: 20px;
         border-radius: 20%;
+    }
+
+    .firstMovContainer{
+        
+        font-size: 20px;
     }
 
     .table-optionButton{

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { LoginContext } from "../contexts/loginContext";
+import ErrorContainer from "./errorContainer";
 
 function SignInForm(){
     const {setEmail, setPassword,login, errorMessage}= useContext(LoginContext)
@@ -7,12 +8,6 @@ function SignInForm(){
     function handleSubmit(event){
         event.preventDefault();
         login()
-    }
-
-    function ErrorContainer(){
-        return(
-            <div className="errorContainer">{errorMessage}</div>
-        )
     }
 
     return(

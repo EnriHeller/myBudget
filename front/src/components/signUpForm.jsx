@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { LoginContext } from "../contexts/loginContext";
+import ErrorContainer from "./errorContainer";
 
 function SignUpForm(){
     const {setEmail, setPassword, setRepeatPassword,signUp}= useContext(LoginContext)
@@ -26,7 +27,7 @@ function SignUpForm(){
                     setRepeatPassword(event.target.value)
                 }}></input>
             </label>
-
+                <ErrorContainer/>
             <button className="optionButton">Sign Up</button>
         </form>
     )

@@ -11,12 +11,7 @@ const Users = sequelize.define("users",{
         type: DataTypes.STRING,
         allowNull: false,
     },
-    isAdmin:{
-        field: "isAdmin",
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-    }},{
+    },{
         tableName:"users",
         underscored: true,
     }

@@ -48,7 +48,6 @@ function Popup(){
                     if(operation === "new"){
                         newMovement(type, value, concept)
                     }else if(operation.type === "edit"){
-                        console.log(operation.id)
                         editMovement(operation.id)
                     }
                     }}>

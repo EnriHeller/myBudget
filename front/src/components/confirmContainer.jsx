@@ -10,7 +10,6 @@ function ConfirmContainer(){
             setConfirmClass("confirmMessage enablePopUp")
             setTimeout(()=>{
                 setConfirmClass("confirmMessage")
-                setConfirmMessage("")
             }, 2000)
         }
     },[confirmMessage])

@@ -14,9 +14,9 @@ function Main(){
 
     return(
         <main className="main">
-            <Resume></Resume>
+            <Resume/>
             <OptionsTable/>
-            <Table></Table>
+            <Table/>
         </main>
     )
 }

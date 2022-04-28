@@ -36,16 +36,13 @@ export const LoginContextProvider = ({children})=>{
             .then((result) => {
                 if(result.status === 200){
                     setErrorMessage("")
-
-                    setTimeout(()=>{
-                        result.json().then((token)=>{
-                            localStorage.setItem("token", `Bearer ${token}`)
-                            navigate("/mainPage")
-                        })
-                    },300)//animación
-                    
+                    result.json().then((token)=>{
+                        localStorage.setItem("token", `Bearer ${token}`)
+                        navigate("/mainPage")
+                    })
                 }else{
                     result.json().then((message)=>{
+                        setErrorMessage(message)
                         throw new Error(message)
                     })
                 }
@@ -65,8 +62,7 @@ export const LoginContextProvider = ({children})=>{
                     password: password
                 } 
                 var myHeaders = new Headers();
-                myHeaders.append("Authorization", localStorage.getItem("token")
-                )
+                
                 myHeaders.append("Content-Type", "application/json");
                 
                 var raw = JSON.stringify(newUser);
@@ -93,13 +89,15 @@ export const LoginContextProvider = ({children})=>{
                         })
                     }else{
                         result.json().then((res)=>{
+                            setErrorMessage(res)
                             throw new Error(res)
                         })
                     }
                 })
                 .catch(error => {console.log('error', error)});
             }else{
-                throw new Error("The passwords don't match. please try again")
+                setErrorMessage("The passwords don't match. Please try again.")
+                throw new Error("The passwords don't match. Please try again.")
             }
         } catch (error) {
             setErrorMessage(error.message)

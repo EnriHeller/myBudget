@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 export const MainContext = createContext()
 
 export const MainContextProvider = ({children})=>{
@@ -17,7 +18,9 @@ export const MainContextProvider = ({children})=>{
 
     const [errorMessage, setErrorMessage] = useState("")
     const [confirmMessage, setConfirmMessage] = useState("")
+
     const navigate = useNavigate()
+
 
     function getMovements(){
         var myHeaders = new Headers();
@@ -30,36 +33,43 @@ export const MainContextProvider = ({children})=>{
         };
 
         fetch("http://localhost:3001/budget", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            if(result.length < 11){
-                setLastMovements(result.reverse())
-                setSelectedOption(result.reverse())
-            }else{
-                const lastMovs = result.slice(result.length - 10, result.length)
-                setLastMovements(lastMovs.reverse())
-                setSelectedOption(lastMovs.reverse())
-            }
-            
-            
-            let counter = 0
-            const entryResults = []
-            const egressResults = []
+        .then(response => response)
+        .then(async(result) => {
+            if(result.status === 200){
+                const jsonResult = await result.json()
 
-            result.forEach(element=>{
-                if(element.type === "EGRESS"){
-                    egressResults.push(element)
-                    counter = counter - element.value
-                }else if(element.type === "ENTRY"){
-                    entryResults.push(element)
-                    counter = counter + element.value
+                if(jsonResult.length < 11){
+                    setLastMovements(jsonResult.reverse())
+                    setSelectedOption(jsonResult.reverse())
+                }else{
+                    const lastMovs = jsonResult.slice(jsonResult.length - 10, jsonResult.length)
+                    setLastMovements(lastMovs.reverse())
+                    setSelectedOption(lastMovs.reverse())
                 }
-            })
-            setTotal(counter)
-            setEntries(entryResults)
-            setExpenses(egressResults)
+                
+                let counter = 0
+                const entryResults = []
+                const egressResults = []
+    
+                jsonResult.forEach(element=>{
+                    if(element.type === "EGRESS"){
+                        egressResults.push(element)
+                        counter = counter - element.value
+                    }else if(element.type === "ENTRY"){
+                        entryResults.push(element)
+                        counter = counter + element.value
+                    }
+                })
+                setTotal(counter)
+                setEntries(entryResults)
+                setExpenses(egressResults)
+            }else{
+                navigate("/")
+            }
         })
         .catch(error => console.log('error', error));
+
+        
     }
 
     function newMovement(type, value, concept){
@@ -172,6 +182,10 @@ export const MainContextProvider = ({children})=>{
 
         concept,
         setConcept,
+
+        confirmMessage,
+        setConfirmMessage,
+        errorMessage,
 
         lastMovements,
         total,

@@ -42,13 +42,12 @@ const signInValidation = async (req, res, next) => {
     } = req.body;
     
     const userInDb = await Users.findOne({
-        attributes: ["email"],
-        $or: [{email: User.email}]
+        where: {email: User.email}
     })
     if(userInDb){
-        if(userInDb.email == User.email){
-            res.status(401);
-            res.json({error: "Email is not available. Please, try again."})
+        if(userInDb.email === User.email){
+            res.status(401).json("Email is not available. Please, try again.")
+            console.log("error")
         }else{
             next()
         }
@@ -56,24 +55,6 @@ const signInValidation = async (req, res, next) => {
         next()
     }
     
-}
-
-const adminValidation = async (req, res, next)=>{
-    try {
-        const comprobation = await Users.findOne({
-            where: {id: req.user.id, isAdmin: true}
-        });
-    
-        if(comprobation){
-            next();
-        }else{
-            res.status(401);
-            res.json({error: "Denied access"});
-        }
-        
-    } catch (error) {
-        res.status(500).json({error: "Error, try again later."});
-    }
 }
 
 const newMovementValidation = async (req, res, next)=>{
@@ -109,7 +90,7 @@ server.use(
         secret: JWT_SECRET,
         algorithms: ["HS256"],
     }).unless({
-        path: ["/logIn", "/signIn"],
+        path: ["/logIn", "/signUp"],
     })
 );  
 
@@ -152,7 +133,6 @@ server.post("/logIn",limiter, async(req, res) =>{
         const token = jwt.sign(
             {
                 id: User.id,
-                isAdmin: User.isAdmin
             },
             JWT_SECRET,
             {expiresIn: "24h"}
@@ -162,69 +142,6 @@ server.post("/logIn",limiter, async(req, res) =>{
         res.status(401).json("Invalid email or password. Please, try again.")
     }
 })
-
-//GET ALL USERS
-server.get("/users", adminValidation, async (req, res) => {
-    const usersArray = await Users.findAll()
-    res.json(usersArray);
-    res.status(200);
-});
-
-//GET USER WITH ID
-server.get("/users/:id",adminValidation, async (req, res) => {
-    try {
-        const userId = req.params.id
-        const user = await Users.findOne({
-        where:{id: userId}
-        })
-        res.status(200).json(user);
-    } catch (error) {
-        res.status(400).json(error.message);
-    }
-});
-
-//EDIT USER
-server.put("/users/:id", adminValidation, async(req,res)=>{
-    idUser = req.params.id;
-    const {email, password, isAdmin} = req.body;
-    try {
-        await Users.update({email, password, isAdmin}, {where:{id: idUser}});
-        const User = await Users.findOne({where: {id: idUser}});
-
-        if(User !== null){
-            res.status(200).json(`User was successfully modified`)
-        }else{
-            throw new Error(`don't exist an user with id ${idUser}`)
-        }
-
-    }catch (error) {
-        res.status(400).json({error: error.message})
-    }
-})
-
-//DELETE USER
-server.delete("/users/:id", adminValidation, async (req,res) =>{
-    const idUser = req.params.id;
-
-    try {
-        await Budget.destroy({
-            where:{
-                users_id: idUser
-            }
-        })
-
-        await Users.destroy({
-            where: {
-                id: idUser
-            }
-        });
-    
-        res.status(200).json("User was deleted successfully");
-    } catch (error) {
-        res.status(400).json(error.message);
-    }
-
-});
 
 ////MOVEMENTS ENDPOINTS
 
